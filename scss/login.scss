@@ -1,0 +1,77 @@
+a {
+    text-decoration: none;
+}
+
+@function rem($px) {
+    @return $px/75px * 1rem;
+}
+
+.login {
+    margin-top: rem(150px);
+}
+
+.login_name {
+    margin-left: rem(76px);
+    width: rem(600px);
+    height: rem(100px);
+    border: rem(4px) solid #99bd90;
+    outline: none;
+    border-radius: rem(10px);
+}
+
+.login_name:nth-child(2) {
+    margin-top: rem(62px);
+}
+
+.login_name::-webkit-input-placeholder {
+    font-size: rem(36px);
+    color: #a1a1a1;
+}
+
+.login_back {
+    margin-left: rem(76px);
+    margin-top: rem(62px);
+    width: rem(600px);
+    height: rem(100px);
+    border: 0;
+    outline: none;
+    background: #99bd90;
+    border-radius: rem(10px);
+    font-size: rem(36px);
+    color: #FFFFFF;
+    text-align: center;
+    letter-spacing: rem(8px);
+}
+.operating{
+    margin: rem(62px) rem(76px) 0 rem(76px);
+    display: flex;
+    justify-content: space-between;
+    span{
+        font-size: rem(34px);
+        color: #b6b6b6;
+    }
+}
+.signInWith{
+    margin: rem(200px) rem(76px) 0 rem(76px);
+    display: flex;
+    justify-content: space-around;
+    div{
+        margin-top: rem(24px);
+        width: rem(180px);
+        height: rem(2px);
+        background: #b6b6b6;
+    }
+    span{
+        font-size: rem(36px);
+        color: #b6b6b6;
+    }
+}
+.login_WeChat{
+    margin-top: rem(66px);
+    img{
+        margin: auto;
+        display: block;
+        width: rem(80px);
+        height: rem(80px);
+    }
+}

@@ -1,0 +1,98 @@
+a {
+    text-decoration: none;
+}
+
+@function rem($px) {
+    @return $px/75px * 1rem;
+}
+
+.registered_next {
+    margin: rem(230px) rem(76px) 0 rem(76px);
+    .registered_name {
+        width: rem(600px);
+        height: rem(100px);
+        border: rem(3px) solid #99bd90;
+        outline: none;
+        border-radius: rem(10px);
+    }
+    .registered_name:nth-child(2) {
+        margin-top: rem(62px);
+    }
+    .gender {
+        position: relative;
+        margin-top: rem(62px);
+        input {
+            width: rem(600px);
+            height: rem(100px);
+            border: rem(3px) solid #99bd90;
+            outline: none;
+            border-radius: rem(10px);
+        }
+        .genders::-webkit-input-placeholder {
+            font-size: rem(36px);
+            color: #a1a1a1;
+        }
+        .gender_img {
+            position: absolute;
+            top: rem(34px);
+            right: rem(34px);
+            width: rem(42px);
+            height: rem(31px);
+        }
+        .gender_show {
+            width: 100%;
+            height: rem(202px);
+            background: #F1F1F1;
+            border-radius: rem(10px);
+            display: none;
+            div{
+                width: 100%;
+                height: rem(100px);
+                font-size: rem(34px);
+                color: #666666;
+                line-height: rem(100px);
+            }
+            .man{
+                border-bottom: rem(2px) solid #DCDCDC;
+            }
+        }
+    }
+    .registereds {
+        margin-top: rem(62px);
+        width: rem(600px);
+        height: rem(100px);
+        background: #99bd90;
+        outline: none;
+        border: 0;
+        border-radius: rem(10px);
+        font-size: rem(36px);
+        color: #FFFFFF;
+        letter-spacing: rem(4px);
+    }
+}
+
+.registered_name::-webkit-input-placeholder {
+    font-size: rem(36px);
+    color: #a1a1a1;
+}
+
+.read_protocol {
+    position: absolute;
+    bottom: rem(120px);
+    left: rem(138px);
+    font-size: rem(24px);
+    color: #B6B6B6;
+    letter-spacing: rem(2px);
+    line-height: rem(46px);
+    .read_next {
+        width: 100%;
+        display: block;
+    }
+    .protocols {
+        margin-left: rem(44px);
+    }
+    .protocol {
+        text-decoration: underline;
+        color: #99bd90;
+    }
+}

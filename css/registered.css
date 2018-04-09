@@ -1,0 +1,90 @@
+a {
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 3.06667rem;
+  text-align: center;
+  font-size: 0.50667rem;
+  color: #99bd90;
+  letter-spacing: 0.05333rem;
+}
+
+.registered {
+  margin: 1.06667rem 1.01333rem 0 1.01333rem;
+}
+.registered .registered_name {
+  width: 8rem;
+  height: 1.33333rem;
+  border: 0.04rem solid #99bd90;
+  outline: none;
+  border-radius: 0.13333rem;
+}
+.registered .Verification_code {
+  margin-top: 0.82667rem;
+  display: flex;
+  justify-content: space-between;
+}
+.registered .Verification_code input {
+  width: 4.66667rem;
+  height: 1.33333rem;
+  border: 0.04rem solid #99bd90;
+  outline: none;
+  border-radius: 0.13333rem;
+}
+.registered .Verification_code .obtain {
+  width: 3.06667rem;
+  height: 1.33333rem;
+  border: 0.04rem solid #99bd90;
+  outline: none;
+  border-radius: 0.13333rem;
+  background: #99bd90;
+  text-align: center;
+  line-height: 1.33333rem;
+  color: #FFFFFF;
+  font-size: 0.45333rem;
+  letter-spacing: 0.02667rem;
+}
+.registered .registered_next {
+  margin-top: 0.82667rem;
+  width: 8rem;
+  height: 1.33333rem;
+  background: #99bd90;
+  border: 0;
+  outline: none;
+  border-radius: 0.13333rem;
+  font-size: 0.48rem;
+  color: #ffffff;
+  letter-spacing: 0.05333rem;
+}
+
+.registered_name::-webkit-input-placeholder {
+  font-size: 0.48rem;
+  color: #a1a1a1;
+}
+
+.VerificationCode::-webkit-input-placeholder {
+  font-size: 0.48rem;
+  color: #CCCCCC;
+}
+
+.read_protocol {
+  margin: 4.05333rem 3.06667rem 0 3.06667rem;
+  font-size: 0.32rem;
+  color: #B6B6B6;
+  letter-spacing: 0.02667rem;
+  line-height: 0.61333rem;
+}
+.read_protocol .read_next {
+  width: 100%;
+  display: block;
+}
+.read_protocol .protocols {
+  margin-left: 0.32rem;
+}
+.read_protocol .protocol {
+  text-decoration: underline;
+  color: #99bd90;
+}
+
+/*# sourceMappingURL=registered.css.map */

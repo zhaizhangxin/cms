@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>举报待审核</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/report.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_439007_9ra7ecm9977ujtt9.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/report.js"></script>
+		<script>
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		</script>
+	</head>
+
+	<body>
+		<header>HODAYS 活动管理系统</header>
+		<section>
+			<div class="left">
+				<ul class="left_status">
+					<a href="reviewed.html">
+						<li class="status status_first">活动审核</li>
+					</a>
+					<a href="ActivityRelease.html">
+						<li class="status status_two">活动发布</li>
+					</a>
+					<a href="plore.html">
+						<li class="status status_three">探索发布</li>
+					</a>
+					<a href="management.html">
+						<li class="status status_fore">内容管理</li>
+					</a>
+					<a href="report.html">
+						<li class="status status_report">举报审核<span class="a_index"></span></li>
+					</a>
+					<a href="index.html">
+						<li class="status status_five">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</li>
+					</a>
+				</ul>
+			</div>
+			<div class="right">
+				<!--<div class="find">
+					<input type="text" name="find" id="find" value="" placeholder="查找活动  / 圈子" />
+					<button class="seach">
+						<i class="iconfont icon-sousuo-copy-copy-copy"></i>
+					</button>
+				</div>-->
+				<div class="status_one">
+					<ul class="status_s">
+						<a href="report.html">
+							<li class="status_a oneStatus" id="status">待审核</li>
+						</a>
+						<a href="report_true.html">
+							<li class="status_a" id="passed">审核属实</li>
+						</a>
+						<a href="report_notTrue.html">
+							<li class="status_a" id="nopass">审核不实</li>
+						</a>
+					</ul>
+				</div>
+				<div class="card">
+					<div class="explore">
+						<!--<div class="explore_one">
+							<ul class="passed">
+								<li class="passed_a plored" data-type="3">探索</li>
+								<li class="passed_a finded" data-type="2">发现</li>
+								<li class="passed_a onlookers" data-type="1">围观</li>
+								<li class="passed_a they" data-type="0">他们</li>
+							</ul>
+							<ul class="num">
+								<li class="num_n">探索 ( <span id="ex_num"></span> )
+								</li>
+								<li class="num_n">发现 ( <span id="find_num"></span> )
+								</li>
+								<li class="num_n">围观 ( <span id="gather_num"></span> )
+									<li class="num_n">他们 ( <span id="they_num"></span> )
+									</li>
+							</ul>
+						</div>
+						<div class="all">
+							<ul class="all_one">
+								<li class="all_a" data-top="0">全部</li>
+								<li class="all_a" data-top="1">推首</li>
+								<li class="all_a" data-top="2">置顶</li>
+								<li class="all_a" data-top="3">推分栏</li>
+								<li class="all_a" data-top="4">置分顶</li>
+								<li class="all_a" data-top="5">保留</li>
+							</ul>
+						</div>-->
+						<div class="pass_activited">
+							<div class="pass_activity">
+								<table border="" cellspacing="" cellpadding="" class="pass_act">
+									<tr>
+										<th>活动名称</th>
+										<th>主办方</th>
+										<th>举报人</th>
+										<th>举报内容</th>
+										<th>举报时间</th>
+										<th>审核属实</th>
+										<th>审核不实</th>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--发现-->
+		<div class="zhezhao"></div>
+		<div class="a">
+			<div class="zhe_show">
+				<div class="head">
+					<span class="head_img">
+				<img src="images/ic_tab_back_normal.png" alt="" />
+			</span>
+					<h2 class="head_find">发现详情</h2>
+					<span class="head_share">
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</span>
+				</div>
+				<div class="pic_act">
+					<div id="pic">
+						<video id="playVideos" class="playVideo">
+							<source src="" id="sources" type="video/mp4"></source>
+							<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+								<param name="movie" value="myvideo.swf" />
+								<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+							</object>
+						</video>
+						<img src="images/btn_play.png" id="pause" alt="" />
+					</div>
+					<p id="active_zi"></p>
+					<p id="act_zi"></p>
+				</div>
+				<div class="col-ys"></div>
+				<div class="information">
+					<div class="in_fo">
+						<div id="add_ress">
+							<img src="" alt="" id="adds_ress"/>
+						</div>
+						<div class="in_time">
+							<p class="act_time">活动时间：<span id="act_time"></span></p>
+							<p class="act_time">举办地点：<span id="act_address"></span></p>
+							<p class="act_time">费&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用：<span id="act_fee"></span><span id="yuan">元/人</span></p>
+							<p class="act_time">人数限制：<span id="act_num"></span><span id="yuan">人</span></p>
+							<p class="act_time">报名截止时间：<span id="act_date"></span></p>
+						</div>
+					</div>
+					<div class="xian"></div>
+					<div class="bao_num">
+						<span class="_bm">已报名：<span id="num"></span>人</span>
+						<span class="_bm"><img src="images/btn_follow_normal.png" alt="" /><span id="y_num"></span></span>
+					</div>
+				</div>
+				<div class="col-ys"></div>
+				<div class="o_info">
+					<div class="organ_info">
+						<span class="or_in">主办方：</span>
+						<div class="or_name"></div>
+					</div>
+					<div class="xian"></div>
+					<div class="or_organ">
+						<button id="contact_the_organizer">联系主办方</button>
+						<button id="contact_the_platform">联系平台</button>
+					</div>
+				</div>
+				<div class="col-ys"></div>
+				<div class="o_infos">
+					<div class="organ_info">
+						<span class="announcement"><img src="images/img_ring.png" alt="" />公告（<span id="announcement"></span>）</span>
+						<span class="announcement_all" id="announcement_all">查看全部<img src="images/btn_more_normal.png" alt="" /></span>
+					</div>
+					<div class="xian"></div>
+					<div class="x_gai">
+						<span id="announcements"></span>
+						<span id="commentTime"></span>
+					</div>
+				</div>
+				<div class="col-ys"></div>
+				<div class="active_act">
+					<h2 class="active_active">活动详情</h2>
+					<div class="xian"></div>
+					<div id="details"></div>
+				</div>
+				<div class="col-ys"></div>
+				<div class="comment">
+					<div class="comment_c">
+						<span class="comment_co">全部评论（<span id="comment"></span>）</span>
+						<span class="comment_comm"><img src="images/btn_comment_normal.png" alt="" />评论</span>
+					</div>
+					<div class="xian"></div>
+					<div class="comment_qu">
+						<!--<!--<img src="images/3.png" alt="" id="comment_img"/>
+				<div class="comment_right">
+					<div class="com_rig">
+						<span id="comment_name">娜娜</span>
+						<span id="comment_cont">来来来</span>
+					</div>
+					<span id="com_time">30分钟前</span>
+				</div>-->
+					</div>
+					<div class="all_pl">
+						<p class="all_zi">查看全部评论</p>
+						<img src="images/btn_more_dowm_normal.png" class="all_image" alt="" />
+					</div>
+				</div>
+			</div>
+			<!--公告-->
+			<div class="show_announcement">
+				<div class="announcement_content">
+					<span class="announcement_content_headImg">
+				<img src="images/ic_tab_back_normal.png" id="announcement_headImg" alt="" />
+			</span>
+					<h2 class="announcement_content_headFind">公告</h2>
+					<span class="announcement_content_headShare">
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</span>
+				</div>
+
+				<div class="show_announcements">
+					<!--<p class="show_announcement_time"></p>
+					<p class="show_announcement_cont"></p>-->
+				</div>
+			</div>
+		</div>
+
+		<!--探索预览-->
+		<div class="zhezhao_a"></div>
+		<div class="a_explore">
+			<div class="zhe_show">
+				<div class="head">
+					<span class="head_img">
+				<img src="images/ic_tab_back_normal.png" alt="" />
+			</span>
+					<h2 class="head_find">探索详情</h2>
+					<span class="head_share">
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</span>
+				</div>
+				<div id="pics">
+					<video id="explore_playVideo" class="playVideo">
+						<source src="" id="sources" type="video/mp4"></source>
+						<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+								<param name="movie" value="myvideo.swf" />
+								<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+							</object>
+					</video>
+					<img src="images/btn_play.png" id="pause" alt="" />
+
+				</div>
+				<div class="head_pic">
+					<div id="head_pic"></div>
+					<div class="head_name">
+						<span class="author">作者：<span id="author_name"></span></span>
+						<span class="attention">
+					<img src="images/btn_add_normal.png" alt="" />
+					关注
+				</span>
+					</div>
+				</div>
+				<p id="activity_title"></p>
+				<p class="activity_time">发布时间：<span id="activityTime"></span></p>
+				<div class="preface">
+					<!--<p class="preface_n">【前言】</p>-->
+					<div id="detail">
+						<!--<img src="images/1.png" alt="" />-->
+					</div>
+					<p class="read">阅读：<span id="read_num"></span>次</p>
+				</div>
+				<div class="col-ys"></div>
+				<div class="comment">
+					<div class="comment_c">
+						<span class="comment_co">全部评论（<span id="comment"></span>）</span>
+						<span class="comment_comm"><img src="images/btn_comment_normal.png" alt="" />评论</span>
+					</div>
+					<div class="xian"></div>
+					<div class="all_pl">
+						<p class="all_zi">查看全部评论</p>
+						<img src="images/btn_more_dowm_normal.png" class="all_image" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--首页预览-->
+		<div class="home">
+			<div class="home_a">
+				<img src="images/ic_tab_more_normal.png" />
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</div>
+			<section>
+				<div class="sec_play">
+					<div class="home_pics">
+						<div id="home_pic">
+							<video id="playVideo" class="playVideo">
+								<source src="" id="source" type="video/mp4"></source>
+								<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+								<param name="movie" value="myvideo.swf" />
+								<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+							</object>
+							</video>
+							<img src="images/btn_play.png" id="paused" alt="" />
+						</div>
+						<div class="home_find">
+							<img src="images/img_1.png" alt="" />
+						</div>
+						<!--<div class="home_subject">
+						<div class="home_subjectOne">
+							<img src="images/img_5.png" />
+						</div>
+						<p id="subject"></p>
+						<div class="home_subjectTwo">
+							<img src="images/img_6.png" />
+						</div>
+					</div>-->
+					</div>
+				</div>
+				<p id="time"></p>
+				<p class="home_num">活动人数: <span id="homeNum"></span>人</p>
+				<p id="home_des"></p>
+				<div class="signUp">
+					<span class="signUp_up">已报名：<span id="signUp_up"></span>人</span>
+					<span>
+						<img src="images/btn_follow_normal.png" alt="" />
+						<span id="signUp"></span>
+					</span>
+				</div>
+				<div class="signUp_xian"></div>
+				<div class="home_organ">
+					<span class="home_organs">主办方:</span>
+					<div class="home_name">
+						<!--<span id="organ_name"></span>-->
+					</div>
+				</div>
+			</section>
+			<footer style="display: flex;">
+				<div class="fotter_one">
+					<img src="images/ic_manu_1_selected.png" alt="" />
+					<span class="home_zi homes">活动</span>
+				</div>
+				<div class="fotter_two">
+					<img src="images/ic_manu_2_normal.png" alt="" />
+					<span class="home_zi">我的</span>
+				</div>
+				<div class="fotter_three">
+					<img src="images/ic_manu_3_normal.png" alt="" />
+					<span class="home_zi">管理</span>
+				</div>
+				<div class="fotter_fore">
+					<img src="images/ic_manu_4_normal.png" alt="" />
+					<span class="home_zi">发布</span>
+				</div>
+			</footer>
+		</div>
+
+	</body>
+
+</html>

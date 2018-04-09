@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>-->
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="mydiv">
+	   </div>
+	   <!--<button id="btn">点击</button>-->
+	   <iframe id="lrc" src="http://music.163.com/api/song/lyric?id=209326&lv=-1&kv=-1" width="" height=""></iframe>
+	</body>
+	<script type="text/javascript">
+//		console.log($('#lrc').val)
+	</script>
+	<!--<script type="text/javascript">
+//		var url = "https://api.hibai.cn/music/Music/Music?id=209326&type=lrc";
+		var url = "http://music.163.com/api/song/lyric?id=209326&lv=-1&kv=-1"
+//		var music;
+//		$("#btn").click(function(){
+			  $.ajax({
+                async : false,
+                url : url,
+                type : "GET",
+                dataType : "jsonp", // 返回的数据类型，设置为JSONP方式
+                success:function(data){
+                	console.log(data);
+//              	music = data;
+                }
+            });
+//		});
+//		console.log(music)
+//		str = '<li>歌词:'+ music +'</li>'
+	</script>-->
+</html>

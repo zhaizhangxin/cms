@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
+		<title>围观预览</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/onlookers.css" />
+		<link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="bower_components/photoswipe/dist/photoswipe.css" />
+		<link rel="stylesheet" type="text/css" href="bower_components/photoswipe/dist/default-skin/default-skin.css" />
+		<script src="bower_components/photoswipe/dist/photoswipe.min.js"></script>
+		<script src="bower_components/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/onlookers.js"></script>
+		<script>
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		</script>
+	</head>
+
+	<body ontouchstart>
+
+		<header>HODAYS 活动管理系统</header>
+
+		<section id="userpart">
+			<!--<div class="left">
+				<ul class="left_status">
+					<a href="reviewed.html">
+						<li class="status status_first">活动审核<span class="a_index"></span></li>
+					</a>
+					<a href="ActivityRelease.html">
+						<li class="status status_two">活动发布</li>
+					</a>
+					<a href="plore.html">
+						<li class="status status_three">探索发布</li>
+					</a>
+					<a href="management.html">
+						<li class="status status_fore">内容管理</li>
+					</a>
+					<a href="index.html">
+						<li class="status status_five">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</li>
+					</a>
+				</ul>
+			</div>-->
+			<div class="right">
+				<div class="title">
+					<span>围观&nbsp;></span>
+					<span id="title"></span>
+					<span id="description"></span>
+				</div>
+				<div class="attention"><span id="attention"></span>关注</div>
+				<div class="image">
+					<div class="headPic">
+						<p>首页图片</p>
+						<div class="line"></div>
+						<div id="homePic" class="pic">
+							<video id="playVideo" class="playVideo">
+								<source src="" id="source" type="video/mp4"></source>
+								<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+									<param name="movie" value="myvideo.swf" />
+									<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+								</object>
+							</video>
+							<img src="images/btn_play.png" id="pauses" alt="" />
+						</div>
+					</div>
+					<div class="detailsPic">
+						<p>详情头图</p>
+						<div class="line"></div>
+						<div id="detailsPic" class="pic">
+							<video id="playVideos" class="playVideo">
+								<source src="" id="sources" type="video/mp4"></source>
+								<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+									<param name="movie" value="myvideo.swf" />
+									<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+								</object>
+							</video>
+							<img src="images/btn_play.png" id="pause" alt="" />
+						</div>
+						<div class="onlookersDetails">
+							<p>围观详情</p>
+							<div class="line"></div>
+							<div class="details">
+								<div class="participants">
+									参与人员
+									<img src="images/icon_more_normal.png" alt="" />
+								</div>
+								<div class="detailsPreview">
+									详情预览
+									<img src="images/icon_more_normal.png" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="informationFlow">
+					<div class="informationNum">
+						<p>信息流</p>
+						<p>共<span id="informationNum"></span>条</p>
+					</div>
+					<div class="line"></div>
+					<div class="all">
+						
+						
+						<!--PhotoSwipe的根元素。 必须有类pswp。-->
+						<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+							<!-- PhotoSwipe的背景。这是一个单独的元素，因为动画不透明度比rgba（）快。 -->
+							<div class="pswp__bg"></div>
+							<!-- 带有溢出的幻灯片包装：隐藏. -->
+							<div class="pswp__scroll-wrap">
+								<!-- 容纳幻灯片的容器。PhotoSwipe只保留在DOM中的3个以节省内存。不要修改这3个pswp__item元素，稍后再添加数据. -->
+								<div class="pswp__container">
+									<div class="pswp__item"></div>
+									<div class="pswp__item"></div>
+									<div class="pswp__item"></div>
+								</div>
+								<!-- 默认（PhotoSwipeUI_Default）界面在滑动区域之上。 可以改变 -->
+								<div class="pswp__ui pswp__ui--hidden">
+									<div class="pswp__top-bar">
+										<!-- 控制是不言自明的。 订单可以更改。 -->
+										<div class="pswp__counter"></div>
+										<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+										<button class="pswp__button pswp__button--share" title="Share"></button>
+										<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+										<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+										<!-- 元素将获取类pswp__preloader - 在预加载器运行时处于活动状态 -->
+										<div class="pswp__preloader">
+											<div class="pswp__preloader__icn">
+												<div class="pswp__preloader__cut">
+													<div class="pswp__preloader__donut"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+										<div class="pswp__share-tooltip"></div>
+									</div>
+									<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button>
+									<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button>
+									<div class="pswp__caption">
+										<div class="pswp__caption__center"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--遮罩-->
+			<div class="masking"></div>
+			<!--参与人员-->
+			<div class="partici">
+				<div class="allComments">
+					<span>参与人员</span>
+					<span class="closes">关闭</span>
+				</div>
+				<div class="participant">
+
+				</div>
+			</div>
+			<!--评论-->
+			<div class="masking_comment">
+				<div class="masking_comments">
+					<div class="allComment">
+						<span>全部<span id="allComment"></span>条</span>
+						<span class="close" style="line-height: 50px;">关闭</span>
+					</div>
+					<div id="commentsDate" class="commentsDate">
+					</div>
+				</div>
+			</div>
+			<!--点赞人数-->
+			<div class="likeNum">
+				<div class="likeComments">
+					<span>点赞人数</span>
+					<span class="closesd">关闭</span>
+				</div>
+				<div class="likeNums">
+
+				</div>
+			</div>
+			<!--预览详情-->
+			<div class="find_show">
+				<div class="zhe_show">
+					<div class="head">
+						<span class="head_img"><img src="images/ic_tab_back_normal.png" alt="" /></span>
+						<h2 class="head_find">发现详情</h2>
+						<span class="head_share"><img src="images/ic_tab_share_normal.png" alt="" /></span>
+					</div>
+					<div class="pic_act">
+						<div id="pic">
+							<video id="playVideos">
+								<source src="" id="sources" type="video/mp4"></source>
+								<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+								<param name="movie" value="myvideo.swf" />
+								<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+							</object>
+							</video>
+							<img src="images/btn_play.png" id="pause" alt="" />
+						</div>
+						<p id="active_zi"></p>
+						<p id="act_zi"></p>
+					</div>
+					<div class="col-ys"></div>
+					<div class="information">
+						<div class="in_fo">
+							<div id="add_ress">
+								<img src="" alt="" id="adds_ress"/>
+							</div>
+							<div class="in_time">
+								<p class="act_time">活动时间：<span id="act_time"></span></p>
+								<p class="act_time">举办地点：<span id="act_address"></span></p>
+								<p class="act_time">费&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用：<span id="act_fee"></span><span id="yuan">元/人</span></p>
+								<p class="act_time">人数限制：<span id="act_num"></span><span id="yuan">人</span></p>
+								<p class="act_time">报名截止时间：<span id="act_date"></span></p>
+							</div>
+						</div>
+						<div class="xian"></div>
+						<div class="bao_num">
+							<span class="_bm">已报名：<span id="num"></span>人</span>
+							<span class="_bm"><img src="images/btn_follow_normal.png" alt="" /><span id="y_num"></span></span>
+						</div>
+					</div>
+					<div class="col-ys"></div>
+					<div class="o_info">
+						<div class="organ_info">
+							<span class="or_in">主办方：</span>
+							<div class="or_name"></div>
+						</div>
+						<div class="xian"></div>
+						<div class="or_organ">
+							<button id="contact_the_organizer">联系主办方</button>
+							<button id="contact_the_platform">联系平台</button>
+						</div>
+					</div>
+					<div class="col-ys"></div>
+					<div class="o_infos">
+						<div class="organ_info">
+							<span class="announcement"><img src="images/img_ring.png" alt="" />公告（<span id="announcement"></span>）</span>
+							<span class="announcement_all" id="announcement_all">查看全部<img src="images/btn_more_normal.png" alt="" /></span>
+						</div>
+						<div class="xian"></div>
+						<div class="x_gai">
+							<span id="announcements"></span>
+							<span id="commentTime"></span>
+						</div>
+					</div>
+					<div class="col-ys"></div>
+					<div class="active_act">
+						<h2 class="active_active">活动详情</h2>
+						<div class="xian"></div>
+						<div id="detailds"></div>
+					</div>
+					<div class="col-ys"></div>
+					<div class="comment">
+						<div class="comment_c">
+							<span class="comment_co">全部评论（<span id="comment"></span>）</span>
+							<span class="comment_comm"><img src="images/btn_comment_normal.png" alt="" />评论</span>
+						</div>
+						<div class="xian"></div>
+						<div class="comment_qu">
+						</div>
+						<div class="all_pl">
+							<p class="all_zi">查看全部评论</p>
+							<img src="images/btn_more_dowm_normal.png" class="all_image" alt="" />
+						</div>
+					</div>
+				</div>
+				<!--公告-->
+				<div class="show_announcement">
+					<div class="announcement_content">
+						<span class="announcement_content_headImg"><img src="images/ic_tab_back_normal.png" id="announcement_headImg" alt="" /></span>
+						<h2 class="announcement_content_headFind">公告</h2>
+						<span class="announcement_content_headShare"><img src="images/ic_tab_share_normal.png" alt="" /></span>
+					</div>
+					<div class="show_announcements">
+						<!--<p class="show_announcement_time"></p>
+						<p class="show_announcement_cont"></p>-->
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+	<script type="text/javascript">
+		var initPhotoSwipeFromDOM = function(gallerySelector) {  // 解析来自DOM元素幻灯片数据（URL，标题，大小...）
+			  // (children of gallerySelector)
+			 
+			var parseThumbnailElements = function(el) { 
+				var thumbElements = el.childNodes,
+					 numNodes = thumbElements.length,
+					 items = [],
+					 figureEl,  linkEl,  size,  item;  
+				for(var i = 0; i < numNodes; i++) { 
+					figureEl = thumbElements[i]; // <figure> element
+					   // 仅包括元素节点
+					 
+					if(figureEl.nodeType !== 1) { 
+						continue; 
+					}
+					25
+					linkEl = figureEl.children[0]; // <a> element
+					   
+					size = linkEl.getAttribute('data-size').split('x');   // 创建幻灯片对象
+					 
+					item = { 
+						src: linkEl.getAttribute('href'),
+						 w: parseInt(size[0], 10),
+						 h: parseInt(size[1], 10) 
+					};   
+					if(figureEl.children.length > 1) {  // <figcaption> content
+						 
+						item.title = figureEl.children[1].innerHTML; 
+					}  
+					if(linkEl.children.length > 0) {  // <img> 缩略图节点, 检索缩略图网址
+						 
+						item.msrc = linkEl.children[0].getAttribute('src'); 
+					}  
+					item.el = figureEl; // 保存链接元素 for getThumbBoundsFn
+					 
+					items.push(item); 
+				}  
+				return items; 
+			};   // 查找最近的父节点
+			 
+			var closest = function closest(el, fn) { 
+				return el && (fn(el) ? el : closest(el.parentNode, fn)); 
+			};   // 当用户点击缩略图触发
+			 
+			var onThumbnailsClick = function(e) { 
+				e = e || window.event; 
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;  
+				var eTarget = e.target || e.srcElement;   // find root element of slide
+				 
+				var clickedListItem = closest(eTarget, function(el) { 
+					return(el.tagName && el.tagName.toUpperCase() === 'FIGURE'); 
+				});  
+				if(!clickedListItem) { 
+					return; 
+				}   // find index of clicked item by looping through all child nodes
+				  // alternatively, you may define index via data- attribute
+				 
+				var clickedGallery = clickedListItem.parentNode,
+					 childNodes = clickedListItem.parentNode.childNodes,
+					 numChildNodes = childNodes.length,
+					 nodeIndex = 0,
+					 index;  
+				for(var i = 0; i < numChildNodes; i++) {
+					if(childNodes[i].nodeType !== 1) { 
+						continue; 
+					}  
+					if(childNodes[i] === clickedListItem) { 
+						index = nodeIndex; 
+						break; 
+					} 
+					nodeIndex++; 
+				}   
+				if(index >= 0) {  // open PhotoSwipe if valid index found
+					 
+					openPhotoSwipe(index, clickedGallery); 
+				} 
+				return false; 
+			};   // parse picture index and gallery index from URL (#&pid=1&gid=2)
+			 
+			var photoswipeParseHash = function() { 
+				var hash = window.location.hash.substring(1),
+					 params = {};  
+				if(hash.length < 5) { 
+					return params; 
+				}  
+				var vars = hash.split('&'); 
+				for(var i = 0; i < vars.length; i++) { 
+					if(!vars[i]) { 
+						continue; 
+					} 
+					var pair = vars[i].split('='); 
+					if(pair.length < 2) { 
+						continue; 
+					} 
+					params[pair[0]] = pair[1]; 
+				}  
+				if(params.gid) { 
+					params.gid = parseInt(params.gid, 10); 
+				}  
+				return params; 
+			};  
+			var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) { 
+				var pswpElement = document.querySelectorAll('.pswp')[0],
+					 gallery,  options,  items;  
+				items = parseThumbnailElements(galleryElement);   // 这里可以定义参数
+				 
+				options = { 
+					barsSize: { 
+						top: 100,
+						 bottom: 100 
+					},
+					 fullscreenEl: false, // 是否支持全屏按钮
+					 shareButtons: [ {
+						id: 'wechat',
+						label: '分享微信',
+						url: '#'
+					},   {
+						id: 'weibo',
+						label: '新浪微博',
+						url: '#'
+					},   {
+						id: 'download',
+						label: '保存图片',
+						url: '{{raw_image_url}}',
+						download: true
+					} ], // 分享按钮
+					   // define gallery index (for URL)
+					 galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+					  getThumbBoundsFn: function(index) {  // See Options -> getThumbBoundsFn section of documentation for more info
+						 
+						var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+							  pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+							  rect = thumbnail.getBoundingClientRect();  
+						return {
+							x: rect.left,
+							y: rect.top + pageYScroll,
+							w: rect.width
+						}; 
+					}  
+				};   // PhotoSwipe opened from URL
+				 
+				if(fromURL) { 
+					if(options.galleryPIDs) {  // parse real index when custom PIDs are used 
+						 
+						for(var j = 0; j < items.length; j++) { 
+							if(items[j].pid == index) { 
+								options.index = j; 
+								break; 
+							} 
+						} 
+					} else {  // in URL indexes start from 1
+						 
+						options.index = parseInt(index, 10) - 1; 
+					} 
+				} else { 
+					options.index = parseInt(index, 10); 
+				}   // exit if index not found
+				 
+				if(isNaN(options.index)) { 
+					return; 
+				}  
+				if(disableAnimation) { 
+					options.showAnimationDuration = 0; 
+				}   // Pass data to PhotoSwipe and initialize it
+				 
+				gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options); 
+				gallery.init(); 
+			};   // loop through all gallery elements and bind events
+			 
+			var galleryElements = document.querySelectorAll(gallerySelector);
+			//新增加代码
+			var userpart = document.querySelector('#userpart');
+
+			userpart.onclick = function(e) {
+				//path.length作为冒泡元素 找到需要的元素
+				for(var i = 0, l = e.path.length; i < l; i++) {
+					if(e.path[i].className === 'my-gallery') {
+						onThumbnailsClick();
+					}
+				}
+			} 
+			console.log(galleryElements);
+			//结束
+			 
+			for(var i = 0, l = galleryElements.length; i < l; i++) { 
+				galleryElements[i].setAttribute('data-pswp-uid', i + 1); 
+				galleryElements[i].onclick = onThumbnailsClick; 
+			}   // Parse URL and open gallery if it contains #&pid=3&gid=1
+			 
+			var hashData = photoswipeParseHash(); 
+			if(hashData.pid && hashData.gid) { 
+				openPhotoSwipe(hashData.pid, galleryElements[hashData.gid - 1], true, true); 
+			} 
+		};   // execute above function
+		 
+		initPhotoSwipeFromDOM('.my-gallery');
+	</script>
+
+</html>

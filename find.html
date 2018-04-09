@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="format-detection" content="telephone=yes" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/find.css">
+		<link rel="stylesheet" type="text/css" href="css/video-js.css" />
+		<script type="text/javascript" src="js/video.min.js"></script>
+		<script type="text/javascript" src="js/flexble.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/find.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=C93b5178d7a8ebdb830b9b557abce78b"></script>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script>
+			var agent = navigator.userAgent,
+				isAndroid = agent.indexOf('Android') > -1 || agent.indexOf('Adr') > -1,
+				isiOS = !!agent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+		</script>
+	</head>
+
+	<body>
+		<div id="ac-picture">
+			<svg version="1.1" id="svg-loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+				<path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+				<path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z">
+					<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+				</path>
+			</svg>
+		</div>
+		<div id="bodys">
+			<div class="pic_act">
+				<div id="pic">
+					<!--<video id="playVideos" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="jquery-weui/dist/demos/images/swiper-2.jpg" preload="none" data-setup="{}" playsinline>-->
+					<!--<source src="images/20171126125748.mp4" id="sources" type="video/mp4"></source>
+					<source src='images/20171126125748.mp4' id="source" type='video/webm'></source>-->
+					<!--</video>-->
+					<img src="images/btn_play.png" id="pause" alt="" />
+				</div>
+				<p id="active_zi"></p>
+				<p id="act_zi"></p>
+			</div>
+			<div class="col-ys"></div>
+			<div class="information">
+				<div class="in_fo">
+					<div id="add_ress">
+						<img src="" alt="" id="adds_ress"/>
+					</div>
+					<div class="in_time">
+						<p class="act_time">活动时间：<span id="act_time"></span></p>
+						<p class="act_time">举办地点：<span id="act_address"></span></p>
+						<p class="act_time">费&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用：<span id="act_fee"></span><span id="yuan">元/人</span></p>
+						<p class="act_time">人数限制：<span id="act_num"></span><span id="yuan">人</span></p>
+						<p class="act_time">报名截止时间：<span id="act_date"></span></p>
+					</div>
+				</div>
+				<div class="xian"></div>
+				<div class="bao_num">
+					<span class="_bm">已报名：<span id="num"></span>&nbsp;人</span>
+					<span class="_bm"><img src="images/btn_follow_normal.png" alt="" /><span id="y_num"></span></span>
+				</div>
+			</div>
+			<div class="col-ys"></div>
+			<div class="o_info">
+				<div class="organ_info">
+					<span class="or_in">主办方：</span>
+					<div class="or_name"></div>
+				</div>
+				<div class="xian"></div>
+				<div class="or_organ">
+					<img src="images/btn_1_normal.png" id="contactOrganizer" />
+					<img src="images/btn_2_normal.png" id="contactPlatform" />
+				</div>
+			</div>
+			<!--联系主办方-->
+			<div class="masking_cont"></div>
+			<div class="masking_organ">
+			</div>
+			<div class="masking_organs">
+			</div>
+			<div class="col-ys"></div>
+			<div class="cement">
+				<div class="o_info">
+					<div class="organ_info">
+						<span class="announcement"><img src="images/img_ring.png" alt="" />公告（<span id="announcement"></span>）</span>
+						<span class="announcement_all">查看全部<img src="images/btn_more_normal.png" alt="" /></span>
+					</div>
+					<div class="xian"><img src="images/line1.png" /></div>
+					<div class="x_gai">
+						<span id="announcements"></span>
+						<span id="commentTime"></span>
+					</div>
+				</div>
+				<div class="col-ys"></div>
+			</div>
+			<div class="active_act">
+				<h2 class="active_active">活动详情</h2>
+			</div>
+			<div class="xian"><img src="images/line1.png" /></div>
+			<div class="active_act">
+				<div id="details">
+				</div>
+			</div>
+			<div class="col-ys"></div>
+			<div class="comment">
+				<div class="comment_c">
+					<span class="comment_co">全部评论 (<span id="comment"></span>)</span>
+					<span class="comment_comm"><img src="images/btn_comment_normal.png" alt="" />评论</span>
+				</div>
+				<div class="xian"><img src="images/line1.png" /></div>
+				<div class="comment_content">
+				</div>
+				<div class="all_a">
+					<p class="all_zi" id="allComments">查看全部评论</p>
+				</div>
+			</div>
+			<div class="suspensions">
+				<div class="suspension">
+					<img src="images/btn_open.png" alt="" class="suspension_img" />
+					<span class="suspension_sign">
+						<img src="images/btn_like_before.png" class="likesBtn" alt="" />
+					</span>
+					<span class="suspension_attention">
+						<img src="images/btn_enroll_before.png" class="enrollBtn" alt="" />
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="masking">
+			<div class="introduction">
+				<textarea name="" id="" class="introduction_area">
+					
+				</textarea>
+				<div class="introduction_btn">
+					<span class="cancel" id="cancel">取消</span>
+					<span class="sign">报名</span>
+				</div>
+			</div>
+		</div>
+		<div class="mask"></div>
+		<div class="code">
+			<img src="images/1523160505(1).jpg" alt="" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		videojs.options.flash.swf = "video-js.swf";
+		var rsid = sessionStorage.rsid;
+		var address;
+		var province;
+		var city;
+		var district;
+		var subject;
+		var description;
+		var indexPic;
+		var appId;
+		var timestamp;
+		var nonceStr;
+		var signature;
+		var url;
+		var dev;
+		if(isAndroid) {
+			dev = 'Android';
+		} else if(isiOS) {
+			dev = 'ios';
+		} else {
+			dev = 'cms';
+		}
+		var wechatUrl = location.href.split('#')[0];
+		wechatUrl = encodeURIComponent(wechatUrl);
+		var urls = "http://cms.hodays.com/Eventdetails/api.php?url=" + wechatUrl;
+		
+		function wechat(wechatUrl, fn) {
+			$.ajax({
+				type: "get",
+				url: urls,
+				async: false,
+				success: fn,
+				error: function() {
+					alert('请求出错');
+				}
+			});
+
+		}
+
+		function wechatSignature(data) {
+			var jsonArr = JSON.parse(data);
+			console.log(jsonArr)
+			var bodys = jsonArr;
+			appId = bodys.appId;
+			timestamp = bodys.timestamp;
+			nonceStr = bodys.nonceStr;
+			signature = bodys.signature;
+			url = bodys.url;
+
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: appId, // 必填，企业号的唯一标识，此处填写企业号corpid
+				timestamp: timestamp, // 必填，生成签名的时间戳
+				nonceStr: nonceStr, // 必填，生成签名的随机串
+				signature: signature, // 必填，签名，见附录1
+				url: url,
+				jsApiList: [
+					// 所有要调用的 API 都要加到这个列表中 
+					'onMenuShareTimeline',
+					'onMenuShareAppMessage',
+					'getLocation',
+				] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+			wx.ready(function() {
+				//获取地理位置接口
+				wx.getLocation({
+					type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+					success: function(res) {
+						var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+						var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+						var speed = res.speed; // 速度，以米/每秒计
+						var accuracy = res.accuracy; // 位置精度
+						var url = "http://api.map.baidu.com/geocoder/v2/?ak=C93b5178d7a8ebdb830b9b557abce78b&callback=renderReverse&location=" + latitude + ',' + longitude + "&output=json&pois=0";
+						$.ajax({
+							type: "GET",
+							dataType: "jsonp",
+							url: url,
+							async: false,
+							success: function(data) {
+								var addressComponent = data.result.addressComponent;
+								if(data.status == 0) {
+									address = data.result.formatted_address;
+									province = addressComponent.province;
+									city = addressComponent.city;
+									district = addressComponent.district;
+									showLocation();
+								}
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) {
+								alert(latlon + "地址位置获取失败");
+							}
+						});
+					},
+					fail: function(res) {
+						address = '';
+						province = '';
+						city = '';
+						district = '';
+						showLocation();
+					},
+					cancel: function(res) {
+						address = '';
+						province = '';
+						city = '';
+						district = '';
+						showLocation();
+					}
+				});
+			})
+			wx.error(function(res) {
+				// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+			});
+		}
+		wechat(wechatUrl, wechatSignature)
+		//时间
+		function stringHandel(str) {
+			var splitArr = str.split('-'),
+				i;
+			str = '';
+			for(i = 0; i <= 2; i += 1) {
+				if(splitArr[i][0] === '0') {
+					splitArr[i] = splitArr[i].substr(1);
+				}
+			}
+			str = splitArr[0] + '|' + splitArr[1] + '|' + splitArr[2] + '|';
+			return str;
+		}
+		//评论
+		var cid = '';
+		var uid = '';
+		var aid = '';
+
+		//JavaScript函数：
+		var minute = 1000 * 60;
+		var hour = minute * 60;
+		var day = hour * 24;
+		//var halfamonth = day * 15;
+		var month = day * 30;
+
+		//评论显示时间
+		function getDateDiff(dateTimeStamp) {
+			var now = new Date().getTime() / 1000;
+			var diffValue = now - dateTimeStamp;
+			diffValue = diffValue * 1000;
+			var monthC = diffValue / month;
+			var weekC = diffValue / (7 * day);
+			var dayC = diffValue / day;
+			var hourC = diffValue / hour;
+			//			alert(hourC);
+			var minC = diffValue / minute;
+			var result;
+			if(monthC >= 1) {
+				result = +parseInt(monthC) + "个月前";
+			} else if(weekC >= 1) {
+				result = +parseInt(weekC) + "周前";
+			} else if(dayC >= 1) {
+				result = +parseInt(dayC) + "天前";
+			} else if(hourC >= 1) {
+				result = +parseInt(hourC) + "个小时前";
+			} else if(minC >= 1) {
+				result = +parseInt(minC) + "分钟前";
+			} else {
+				result = "刚刚";
+			}
+			return result;
+		}
+
+		//获取指定url的参数
+		function GetUrlParam(paraName) {　　　　
+			var url = document.location.toString();　　　　
+			var arrObj = url.split("?");
+			if(arrObj.length > 1) {　　　　　　
+				var arrPara = arrObj[1].split("&");　　　　　　
+				var arr;
+				for(var i = 0; i < arrPara.length; i++) {　　　　　　　　
+					arr = arrPara[i].split("=");
+					if(arr != null && arr[0] == paraName) {　　　　　　　　　　
+						return arr[1];　　　　　　　　
+					}　　　　　　
+				}　　　　　　
+				return "";　　　　
+			}　　　　
+			else {　　　　　　
+				return "";　　　　
+			}　　
+		};
+		var aid = GetUrlParam("id");
+
+		function showLocation() {
+			pass(aid, address, province, city, district,dev);
+			wx.ready(function() {
+				//	分享到朋友圈
+				wx.onMenuShareTimeline({
+					title: subject, // 分享标题
+					link: window.location.href, // 分享链接，该链接域名必须与当前企业的可信域名一致
+					imgUrl: indexPic, // 分享图标
+					success: function() {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function() {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+				//	分享给朋友
+				wx.onMenuShareAppMessage({
+					title: subject, // 分享标题
+					desc: description, // 分享描述
+					link: window.location.href, // 分享链接，该链接域名必须与当前企业的可信域名一致
+					imgUrl: indexPic, // 分享图标
+					type: '', // 分享类型,music、video或link，不填默认为link
+					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					success: function() {
+						// 用户确认分享后执行的回调函数
+					},
+					cancel: function() {
+						// 用户取消分享后执行的回调函数
+					}
+				});
+			})
+		}
+
+		var commentNumber;
+
+		function pass(aid, address, province, city, district, dev) {
+			//框架信息
+			var url = "/api/activity/" + dev + "/details/" + aid + "?address=" + address + "&province=" + province + "&city=" + city + "&area=" + district + "";
+			url = encodeURI(url);
+			url_s = encodeURI(url);
+			$.ajax({
+				type: "get",
+				url: url_s,
+				async: false,
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					if(data != '') {
+						$('#bodys').show();
+						$('#ac-picture').hide();
+						console.log(data);
+						//body里面的数据
+						var bodys = data.body;
+//						var indexPic = bodys.indexPic;
+						//头图
+						var headStr = bodys.headPic;
+						if(!/\.(mp4)$/.test(headStr)) {
+							$('#playVideos').hide();
+							$('#pause').hide()
+							$('#pic').css('background-image', 'url(' + headStr + ')');
+						} else {
+							var videoImage = bodys.videoImage;
+							$('#pic').append('<video id="playVideos" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="' + videoImage + '" preload="none" data-setup="{}" playsinline><source src="' + headStr + '" id="sources" type="video/mp4"></source></video>');
+//							$('#pic').html('<video id="playVideos" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="' + videoImage + '" preload="none" data-setup="{}" playsinline webkit-playsinline><source src="' + headStr + '" id="sources" type="video/mp4"></source></video>');
+							$('#pause').show();
+							var myPlayer = videojs('playVideos');
+							$('#pause').click(function() {
+								$(this).hide()
+								myPlayer.play();
+							});
+						}
+						indexPic = bodys.indexPic;
+						console.log(indexPic)
+						subject = bodys.subject;
+						description = bodys.description;
+						$('#active_zi').html(bodys.subject);
+						$('#act_zi').html(bodys.description);
+						//地址图片
+						$('#adds_ress').attr('src',bodys.mapPic);
+//						$('#add_ress').css('background-image', 'url(' + mapStr + ')');
+						$('#act_time').html(stringHandel(bodys.beginDateTime) + '-' + stringHandel(bodys.endDateTime));
+						$('#act_address').html(bodys.address);
+						$('#act_fee').html(bodys.fee);
+						$('#act_num').html(bodys.activityNum);
+						$('#act_date').html(bodys.registerEndTime);
+						$('#num').html(bodys.attenceNum);
+						$('#y_num').html(bodys.focusNum);
+						//				联系方式
+						$('.masking_organ').html('<h2 class="cont">联系主办方</h2><div class="phone"><a href="tel:' + bodys.mobile + '" id="mobile"></a><a href="tel:' + bodys.telephone + '" id="telephone"></a></div>');
+						$('.masking_organs').html('<h2 class="conts">联系平台</h2><div class="phones"><a href="tel:' + bodys.platformPhone + '" id="platformPhone"></a></div>');
+						$('#mobile').html(bodys.mobile);
+						$('#telephone').html(bodys.telephone);
+						$('#platformPhone').html(bodys.platformPhone);
+						//主办方信息
+						var organArr = bodys.organizers;
+						if(organArr == '') {
+							return;
+						} else {
+							organArr.forEach(function(item, index) {
+								//						$('.or_name').html('<span class="orgin"><img src="' + item.headPic + '" alt="" id="or_img"/><span id="or_name">' + item.username + '</span></span>');
+								$('.or_name').append('<span class="orgin"><span id="or_name">' + item.username + '</span></span>');
+								if($('.or_name').find('img').length > 0) {
+									$(this).css({
+										padding: 0
+									});
+								}
+							});
+						}
+					} else {
+						$('#bodys').hide();
+						$('#ac-picture').show();
+					}
+
+				},
+			});
+			//详细信息
+			$.ajax({
+				type: "get",
+				url: "/api/activity/" + dev + "/contents/" + aid + "",
+				async: true,
+				dataType: "json",
+				success: function(data) {
+					//body里面的数据
+					console.log(data)
+					var bodys = data.body;
+					var actStatus = data.status;
+					$('#details').html(bodys.contents[2].content.text);
+					$.each($('#details').find('p'), function(index, element) {
+						if($(element).find('img').length > 0) {
+							$(this).css({
+								padding: 0
+							});
+						}
+						if($(element).find('video').length > 0) {
+							$(this).css({
+								padding: 0
+							});
+						}
+					});
+				},
+			});
+			//公告
+			$.ajax({
+				type: "get",
+				url: "/api/activity/announcement/" + aid + "/1/6/",
+				async: true,
+				success: function(data) {
+					var dataStr = JSON.parse(data);
+					console.log(dataStr)
+					var bodys = dataStr.body;
+					var commentNumber = bodys.commentNumber;
+					$('#announcement').html(commentNumber);
+					var comments = bodys.comments;
+					if(JSON.stringify(comments) == '[]') {
+						$('.cement').hide();
+					} else {
+						$('.cement').show();
+						comments.forEach(function(item, index) {
+							var commentContent = item.commentContent;
+							$('#announcements').html(commentContent);
+							var commentTime = item.commentTime;
+							$('#commentTime').html(commentTime);
+						})
+					}
+				},
+			});
+			//评论
+			$.ajax({
+				type: "get",
+				url: "/api/activity/comment/" + aid + "/1/",
+				async: true,
+				success: function(data) {
+					var jsonData = JSON.parse(data);
+					console.log(jsonData)
+					var bodys = jsonData.body;
+					commentNumber = bodys.commentNumber;
+					$('#comment').html(bodys.commentNumber);
+					var commentArr = bodys.comments;
+					commentArr.forEach(function(item, index) {
+						var eid = item.cid;
+						var comTime = item.commentTime;
+						var resData = comTime;
+						resData = resData.replace(/-/g, '/');
+						var time = Date.parse(new Date(resData)) / 1000;
+						getDateDiff(time);
+						var times = getDateDiff(time);
+
+						$('.comment_content').append('<div id="comment_one' + index + '" class="comment_one"><div class="comment_qu"><img src="' + item.headPic + '" alt="" id="comment_img"/><div class="comment_right get-focus" data-cid="' + eid + '" id="commentRight' + index + '"><div class="com_rig"><span id="comment_name">' + item.username + '</span><span id="comment_time">' + times + '</span></div><span id="comment_cont">' + item.commentContent + '</span></div></div></div>');
+						if($('.comment_content').find('img').length > 0) {
+							$(this).css({
+								padding: 0
+							});
+						}
+					})
+				},
+			});
+		}
+
+		$('#contactOrganizer').click(function() {
+			$('.masking_cont').show();
+			$('.masking_organ').show();
+		});
+		$('#contactPlatform').click(function() {
+			$('.masking_cont').show();
+			$('.masking_organs').show();
+		});
+		$('.masking_cont').click(function() {
+			$(this).hide();
+			$('.masking_organ').hide();
+			$('.masking_organs').hide();
+		});
+
+		//点击弹出报名/关注
+		$('.suspension_img').click(function() {
+			$('.suspension span').toggle({
+				'transform': 'translateY(100px)'
+			});
+			var suspensionImg = $('.suspension_img').attr('src');
+			if(suspensionImg == 'images/btn_open.png') {
+				$('.suspension_img').attr('src', 'images/btn_close(1).png');
+			} else {
+				$('.suspension_img').attr('src', 'images/btn_open.png');
+			}
+		});
+		//关注
+		function attention(device, aid, isAttentions) {
+			$.ajax({
+				type: "post",
+				url: "/api/activity/" + device + "/attention/" + aid + "/",
+				headers: {
+					rsid: rsid
+				},
+				data: {
+					isAttention: isAttentions
+				},
+				async: true,
+				success: function(data) {
+					var dataArr = JSON.parse(data);
+					console.log(dataArr)
+					//				console.log(data);
+					var status = dataArr.status;
+					var msg = dataArr.msg;
+					if(status != '0') {
+						alert(msg);
+					}
+				},
+				error: function() {
+					alert('请求失败');
+				}
+			});
+		}
+		var status;
+		var msg;
+		//报名
+		function signUp(device, aid, selfIntroductions, isSignUps) {
+			$.ajax({
+				type: "post",
+				url: "/api/activity/" + device + "/signUp/" + aid + "/",
+				headers: {
+					rsid: rsid
+				},
+				data: {
+					selfIntroduction: selfIntroductions,
+					isSignUp: isSignUps
+				},
+				async: false,
+				success: function(data) {
+					var dataArr = JSON.parse(data);
+					status = dataArr.status;
+					msg = dataArr.msg;
+					console.log(dataArr);
+				},
+				error: function() {
+					alert('请求出错');
+				}
+			});
+		}
+		//点击取消
+		$('#cancel').click(function() {
+			$('.masking').hide();
+
+		});
+		if(isiOS) {
+			$('.likesBtn').click(function() {
+				$('.mask').show();
+				$('.code').show();
+			})
+			
+			$('.enrollBtn').click(function() {
+				$('.mask').show();
+				$('.code').show();
+			})
+			$('.mask').click(function(){
+				$('.code').hide();
+				$(this).hide();
+			});
+			
+			
+			//关注
+			var isAttentions = sessionStorage.isAttentions;
+			//报名
+			var isSignUps = sessionStorage.isSignUps;
+			//点击关注
+//			$('.likesBtn').click(function() {
+//				if(rsid == undefined) {
+//					window.location.replace('login.html');
+//				} else {
+//					var likesBth = $('.likesBtn').attr('src');
+//					if(likesBth == 'images/btn_like_before.png') {
+//						isAttentions = '1';
+//						sessionStorage.isAttentions = isAttentions;
+//						$('.likesBtn').attr('src', 'images/btn_like_after.png');
+//						alert('关注成功,请在APP内查看');
+//					}
+//					if(likesBth == 'images/btn_like_after.png') {
+//						isAttentions = '0';
+//						sessionStorage.isAttentions = isAttentions;
+//						$('.likesBtn').attr('src', 'images/btn_like_before.png');
+//					}
+//					attention('ios', aid, isAttentions);
+//				}
+//			});
+//			if(isAttentions == '1') {
+//				var likesBth = $('.likesBtn').attr('src');
+//				$('.likesBtn').attr('src', 'images/btn_like_after.png');
+//			}
+//			if(isAttentions == '0') {
+//				var likesBth = $('.likesBtn').attr('src');
+//				$('.likesBtn').attr('src', 'images/btn_like_before.png');
+//			}
+			
+			//点击报名
+//			$('.enrollBtn').click(function() {
+//				if(rsid == undefined) {
+//					window.location.replace('login.html');
+//				} else {
+//					var enrollBtn = $('.enrollBtn').attr('src');
+//					if(enrollBtn == 'images/btn_enroll_before.png') {
+//						$('.masking').show();
+//						isSignUps = '1';
+//						sessionStorage.isSignUps = isSignUps;
+//					}
+//					if(enrollBtn == 'images/btn_enroll_after.png') {
+//						var selfIntroductions = '';
+//						isSignUps = '0';
+//						sessionStorage.isSignUps = isSignUps;
+//						signUp('ios', aid, selfIntroductions, isSignUps);
+//						console.log(selfIntroductions)
+//						if(status == '0') {
+//							$('.enrollBtn').attr('src', 'images/btn_enroll_before.png');
+//						} else {
+//							alert(msg);
+//						}
+//					}
+//
+//				}
+//
+//			});
+			//点击报名
+//			$('.sign').click(function() {
+//				var selfIntroductions = $('.introduction_area').val();
+//				//			console.log(selfIntroductions);
+//				if(selfIntroductions != '') {
+//					$('.masking').hide();
+//					signUp('ios', aid, selfIntroductions, isSignUps);
+//					if(status == '0') {
+//						alert('报名成功,请在APP内查看');
+//						$('.enrollBtn').attr('src', 'images/btn_enroll_after.png');
+//					} else {
+//						alert(msg);
+//					}
+//
+//				}
+//			});
+
+//			if(isSignUps == '1') {
+//				var enrollBtn = $('.enrollBtn').attr('src');
+//				$('.enrollBtn').attr('src', 'images/btn_enroll_after.png');
+//
+//			}
+//			if(isSignUps == '0') {
+//				var enrollBtn = $('.enrollBtn').attr('src');
+//				$('.enrollBtn').attr('src', 'images/btn_enroll_before.png');
+//
+//			}
+
+		}
+		if(isAndroid) {
+			//关注
+			var isAttentions = sessionStorage.isAttentions;
+			//报名
+			var isSignUps = sessionStorage.isSignUps;
+			//点击关注
+//			$('.likesBtn').click(function() {
+//				if(rsid == undefined) {
+//					window.location.replace('login.html');
+//				} else {
+//					var likesBth = $('.likesBtn').attr('src');
+//					if(likesBth == 'images/btn_like_before.png') {
+//						isAttentions = '1';
+//						sessionStorage.isAttentions = isAttentions;
+//						$('.likesBtn').attr('src', 'images/btn_like_after.png');
+//						alert('关注成功,请在APP内查看');
+//					}
+//					if(likesBth == 'images/btn_like_after.png') {
+//						isAttentions = '0';
+//						sessionStorage.isAttentions = isAttentions;
+//						$('.likesBtn').attr('src', 'images/btn_like_before.png');
+//					}
+//					attention('android', aid, isAttentions);
+//				}
+//			});
+//			if(isAttentions == '1') {
+//				var likesBth = $('.likesBtn').attr('src');
+//				$('.likesBtn').attr('src', 'images/btn_like_after.png');
+//			}
+//			if(isAttentions == '0') {
+//				var likesBth = $('.likesBtn').attr('src');
+//				$('.likesBtn').attr('src', 'images/btn_like_before.png');
+//			}
+//
+//			//点击报名
+//			$('.enrollBtn').click(function() {
+//				if(rsid == undefined) {
+//					window.location.replace('login.html');
+//				} else {
+//					var enrollBtn = $('.enrollBtn').attr('src');
+//					if(enrollBtn == 'images/btn_enroll_before.png') {
+//						$('.masking').show();
+//						isSignUps = '1';
+//						sessionStorage.isSignUps = isSignUps;
+//					}
+//					if(enrollBtn == 'images/btn_enroll_after.png') {
+//						var selfIntroductions = '';
+//						isSignUps = '0';
+//						sessionStorage.isSignUps = isSignUps;
+//						signUp('android', aid, selfIntroductions, isSignUps);
+//						console.log(selfIntroductions)
+//						if(status == '0') {
+//							$('.enrollBtn').attr('src', 'images/btn_enroll_before.png');
+//						} else {
+//							alert(msg);
+//						}
+//					}
+//
+//				}
+//
+//			});
+//			//点击报名
+//			$('.sign').click(function() {
+//				var selfIntroductions = $('.introduction_area').val();
+//				//			console.log(selfIntroductions);
+//				if(selfIntroductions != '') {
+//					$('.masking').hide();
+//					signUp('android', aid, selfIntroductions, isSignUps);
+//					if(status == '0') {
+//						alert('报名成功,请在APP内查看');
+//						$('.enrollBtn').attr('src', 'images/btn_enroll_after.png');
+//					} else {
+//						alert(msg);
+//					}
+//
+//				}
+//			});
+//
+//			if(isSignUps == '1') {
+//				var enrollBtn = $('.enrollBtn').attr('src');
+//				$('.enrollBtn').attr('src', 'images/btn_enroll_after.png');
+//
+//			}
+//			if(isSignUps == '0') {
+//				var enrollBtn = $('.enrollBtn').attr('src');
+//				$('.enrollBtn').attr('src', 'images/btn_enroll_before.png');
+//			}
+			$('.likesBtn').click(function() {
+				$('.mask').show();
+				$('.code').show();
+			})
+			
+			$('.enrollBtn').click(function() {
+				$('.mask').show();
+				$('.code').show();
+			})
+			$('.mask').click(function(){
+				$('.code').hide();
+				$(this).hide();
+			});
+		}
+	</script>
+
+</html>

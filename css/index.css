@@ -1,0 +1,135 @@
+a {
+	text-decoration: none;
+}
+
+header {
+	width: 100%;
+	height: 80px;
+	background: #828958;
+	color: #fefff4;
+	text-align: center;
+	line-height: 80px;
+	letter-spacing: 4px;
+	font-size: 28px;
+}
+
+.left {
+	width: 166px;
+	height: 1910px;
+	background: #efefef;
+	/*display: inline-block;*/
+	float: left;
+	overflow: hidden;
+}
+
+.left_status {
+	margin-top: 30px;
+}
+
+.status {
+	width: 100%;
+	height: 35px;
+	margin-top: 12px;
+	text-align: center;
+	color: #FEFFF4;
+	line-height: 35px;
+}
+
+.status_first {
+	background: #665443;
+}
+
+.status_two {
+	background: #676341;
+}
+
+.status_three {
+	background: #4e6742;
+}
+
+.status_fore {
+	background: #4E6742;
+}
+
+.status_five {
+	background: #665443;
+	position: relative;
+}
+
+#login {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -118px 0 0 -244px;
+	width: 440px;
+	height: 336px;
+}
+
+.login_back {
+	width: 100%;
+	height: 184px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-image: url(../images/1.jpg);
+}
+
+.login_button {
+	width: 100%;
+	height: 148px;
+	overflow: auto;
+	background: ghostwhite;
+}
+
+.login_button div {
+	width: 46%;
+}
+
+.login_name {
+	margin: auto;
+	margin-top: 16px;
+}
+
+.login_pass {
+	margin: auto;
+}
+
+.login_pass input {
+	padding-left: 4px;
+	width: 100%;
+	height: 20px;
+}
+
+.login_name input {
+	padding-left: 4px;
+	width: 100%;
+	height: 20px;
+}
+
+#loginIn {
+	margin-left: 122px;
+	margin-top: 33px;
+	width: 202px;
+	height: 30px;
+	background: #2aa7e2;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	color: #fff;
+	letter-spacing: 2px;
+	font-size: 12px;
+	border-radius: 4px;
+}
+
+.a_index {
+	position: absolute;
+	top: 13px;
+	right: 24px;
+	display: inline-block;
+	/*margin: 72px;*/
+	border-right: 2px solid;
+	border-bottom: 2px solid;
+	width: 8px;
+	height: 8px;
+	transform: rotate(-45deg);
+}

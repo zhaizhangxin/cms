@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/echarts.js"></script>
+		<!--<script src="node_mod"></script>-->
+		<script src="http://echarts.baidu.com/asset/map/js/china.js"></script>
+		<script src="js/echart.js"></script>
+		<script type="text/javascript">
+			function goBackProeMap(){
+                $('#cont_pro_map').css('display','block');
+                $('#cont_city_map').css('display','none');
+                $('.retPro').css('display','none');
+            }
+		</script>
+	</head>
+	<body>
+		<div id="main_hour" style="width: 600px;height: 400px;"></div>
+		<div id="main_day" style="width: 600px;height: 400px;"></div>
+		<div id="main_month" style="width: 600px;height: 400px;"></div>
+		<div id="main_pie" style="width: 600px;height: 400px;"></div>
+		<!--<div id="main_map" style="width: 1000px;height: 600px;"></div>-->
+		
+		
+		<div class="main" style="width:1300px;height:;margin:50px auto;">
+            <div id="p" style="width:1300px;height:680px;padding:10px;">
+                    <!--下属单位完成项目概况-->
+                <div class="proj fl pro_map" style="position: relative;">
+                    <div class="proj_top">
+                        <p>地图总览</p>
+                    </div>
+                    <div class="retPro">
+                        <a href="javascript:void(0);" onclick="goBackProeMap()">
+                            返回中国地图
+                        </a>
+                    </div>
+                    <div id="cont_pro_map" style="width:1000px;height:600px;float:left;position: absolute;left:10px;top:50px;z-index:1;"></div>
+                    <div id="cont_city_map" style="width:1000px;height:600px;float:left;display: none;position: absolute;left:10px;top:50px;z-index:99;"></div>
+                     
+                </div>
+                 
+            </div>
+        </div>
+	</body>
+	
+</html>

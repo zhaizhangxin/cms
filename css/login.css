@@ -1,0 +1,78 @@
+a {
+  text-decoration: none;
+}
+
+.login {
+  margin-top: 2rem;
+}
+
+.login_name {
+  margin-left: 1.01333rem;
+  width: 8rem;
+  height: 1.33333rem;
+  border: 0.05333rem solid #99bd90;
+  outline: none;
+  border-radius: 0.13333rem;
+}
+
+.login_name:nth-child(2) {
+  margin-top: 0.82667rem;
+}
+
+.login_name::-webkit-input-placeholder {
+  font-size: 0.48rem;
+  color: #a1a1a1;
+}
+
+.login_back {
+  margin-left: 1.01333rem;
+  margin-top: 0.82667rem;
+  width: 8rem;
+  height: 1.33333rem;
+  border: 0;
+  outline: none;
+  background: #99bd90;
+  border-radius: 0.13333rem;
+  font-size: 0.48rem;
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: 0.10667rem;
+}
+
+.operating {
+  margin: 0.82667rem 1.01333rem 0 1.01333rem;
+  display: flex;
+  justify-content: space-between;
+}
+.operating span {
+  font-size: 0.45333rem;
+  color: #b6b6b6;
+}
+
+.signInWith {
+  margin: 2.66667rem 1.01333rem 0 1.01333rem;
+  display: flex;
+  justify-content: space-around;
+}
+.signInWith div {
+  margin-top: 0.32rem;
+  width: 2.4rem;
+  height: 0.02667rem;
+  background: #b6b6b6;
+}
+.signInWith span {
+  font-size: 0.48rem;
+  color: #b6b6b6;
+}
+
+.login_WeChat {
+  margin-top: 0.88rem;
+}
+.login_WeChat img {
+  margin: auto;
+  display: block;
+  width: 1.06667rem;
+  height: 1.06667rem;
+}
+
+/*# sourceMappingURL=login.css.map */

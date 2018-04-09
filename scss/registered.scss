@@ -1,0 +1,91 @@
+a {
+    text-decoration: none;
+}
+
+@function rem($px) {
+    @return $px/75px * 1rem;
+}
+
+h2 {
+    margin-top: rem(230px);
+    text-align: center;
+    font-size: rem(38px);
+    color: #99bd90;
+    letter-spacing: rem(4px);
+}
+
+.registered {
+    margin: rem(80px) rem(76px) 0 rem(76px);
+    .registered_name {
+        width: rem(600px);
+        height: rem(100px);
+        border: rem(3px) solid #99bd90;
+        outline: none;
+        border-radius: rem(10px);
+    }
+    .Verification_code {
+        margin-top: rem(62px);
+        display: flex;
+        justify-content: space-between;
+        input {
+            width: rem(350px);
+            height: rem(100px);
+            border: rem(3px) solid #99bd90;
+            outline: none;
+            border-radius: rem(10px);
+        }
+        .obtain {
+            width: rem(230px);
+            height: rem(100px);
+            border: rem(3px) solid #99bd90;
+            outline: none;
+            border-radius: rem(10px);
+            background: #99bd90;
+            text-align: center;
+            line-height: rem(100px);
+            color: #FFFFFF;
+            font-size: rem(34px);
+            letter-spacing: rem(2px);
+        }
+    }
+    .registered_next {
+        margin-top: rem(62px);
+        width: rem(600px);
+        height: rem(100px);
+        background: #99bd90;
+        border: 0;
+        outline: none;
+        border-radius: rem(10px);
+        font-size: rem(36px);
+        color: #ffffff;
+        letter-spacing: rem(4px);
+    }
+}
+
+.registered_name::-webkit-input-placeholder {
+    font-size: rem(36px);
+    color: #a1a1a1;
+}
+
+.VerificationCode::-webkit-input-placeholder {
+    font-size: rem(36px);
+    color: #CCCCCC;
+}
+.read_protocol{
+    margin: rem(304px) rem(230px) 0 rem(230px);
+    font-size: rem(24px);
+    color: #B6B6B6;
+    letter-spacing: rem(2px);
+    line-height: rem(46px);
+    .read_next{
+        width: 100%;
+        display: block;
+    }
+    .protocols{
+        margin-left: rem(24px);
+    }
+    .protocol{
+        text-decoration: underline;
+        color: #99bd90;
+    }
+}

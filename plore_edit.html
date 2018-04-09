@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>探索发布</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/plore.css" />
+		<script type="text/javascript" src="utf8-php/ueditor.config.js"></script>
+		<script type="text/javascript" src="utf8-php/ueditor.all.js"></script>
+		<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="cropper-master20160830/dist/cropper.min.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="kartik-v-bootstrap-fileinput-7c76321/css/fileinput.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="kartik-v-bootstrap-fileinput-7c76321/js/fileinput.js"></script>
+		<script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="kartik-v-bootstrap-fileinput-7c76321/js/locales/zh.js"></script>
+		
+		<script type="text/javascript" src="cropper-master20160830/dist/cropper.js"></script>
+		<script type="text/javascript" src="js/plore_edit.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/main_one.js"></script>
+		<script src="js/main_new.js"></script>
+		<style type="text/css">
+			#by {
+				background-color: #fff;
+			}
+			
+			.container {
+				position: relative;
+				margin: 0;
+				padding: 0;
+				margin-left: 270px;
+				margin-top: 30px;
+				width: 354px;
+				height: 347px;
+			}
+			
+			.con_tainer {
+				position: absolute;
+				display: inline-block;
+				float: right;
+				margin: 0;
+				padding: 0;
+				top: 716px;
+				left: 491px;
+				width: 130px;
+				height: 195px;
+			}
+			
+			#avatarView {
+				margin: 0;
+				width: 130px;
+				height: 195px;
+				text-align: center;
+				line-height: 150px;
+			}
+			
+			.modal-open {
+				overflow: auto;
+			}
+			
+			.avatar-view {
+				margin: 0;
+				width: 354px;
+				height: 347px;
+			}
+			
+			.avatar-view:nth-child(2) {
+				width: 130px;
+				height: 150px;
+			}
+			
+			.avatar-view img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#crop_Avatar {
+				position: relative;
+				width: 354px;
+				height: 210px;
+			}
+			
+			#avatars {
+				width: 354px;
+				height: 210px;
+			}
+			
+			#preview {
+				height: 364px;
+				width: 100%;
+				margin-top: 15px;
+				box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+				background-color: #fcfcfc;
+			}
+			
+			#imghead {
+				width: 100%;
+				height: 100%;
+				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+			}
+			
+			#previews {
+				height: 364px;
+				width: 100%;
+				margin-top: 15px;
+				box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
+				background-color: #fcfcfc;
+			}
+			
+			#imgheads {
+				width: 100%;
+				height: 100%;
+				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+			}
+			.file-input{
+				margin-left: 44%;
+				margin-top: 27%;
+			}
+			.file-preview{
+				margin-left: -35%;
+				margin-top: -24%;
+				background: #fff;
+			}
+			.kv-upload-progress{
+				width: 70%;
+			}
+			.draft{
+				margin-left: 65px;
+			}
+			.modal-backdrop.in{
+				z-index: -10;
+			}
+			
+		</style>
+
+	</head>
+
+	<body id="by">
+		<header>HODAYS 活动管理系统</header>
+		<section>
+			<div class="left">
+				<ul class="left_status">
+					<a href="reviewed.html">
+						<li class="status status_first">活动审核</li>
+					</a>
+					<a href="ActivityRelease.html">
+						<li class="status status_two">活动发布</li>
+					</a>
+					<a href="plore.html">
+						<li class="status status_three">探索发布<span class="a_index"></span></li>
+					</a>
+					<a href="management.html">
+						<li class="status status_fore">内容管理</li>
+					</a>
+					<a href="index.html">
+						<li class="status status_five">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</li>
+					</a>
+				</ul>
+			</div>
+			<!--首页图-->
+			<div class="container" id="crop-avatar">
+				<div class="avatar-view" id="avatar" title="Change the avatar">
+					<img src="images/uploadImage.png" id="imgVideo" alt="Avatar">
+					<video src="" id="video_video"></video>
+				</div>
+				<div class="video_one">
+					<button id="upLoadVideo">发布视频</button>
+					<button id="upLoad">发布图片</button>
+				</div>
+				<div class="videoMasking">
+					<div class="videoMask"></div>
+					<form id="videoForm" method="post">
+						<input type="file" name="uploadfile" id="uploadfile" value="" />
+						
+					</form>
+				</div>
+				<div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<form class="avatar-form" method="post">
+								<div class="modal-header">
+									<button class="close" data-dismiss="modal" type="button">&times;</button>
+									<h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+								</div>
+								<div class="modal-body">
+									<div class="avatar-body">
+										<div class="avatar-upload">
+											<input class="avatar-src" name="avatar_src" type="hidden">
+											<input class="avatar-data" name="avatar_data" type="hidden">
+											<label for="avatarInput">Local upload</label>
+											<input class="avatar-input" id="avatarInput" id="avatarForm" name="avatar_file" type="file">
+										</div>
+										<div class="row">
+											<div class="col-md-9">
+												<div class="avatar-wrapper"></div>
+											</div>
+										</div>
+
+										<div class="row avatar-btns">
+											<div class="col-md-3" style="float: right;">
+												<button class="btn btn-primary btn-block avatar-save" type="button">确定</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--头图-->
+			<div class="container con_tainers" id="crop_Avatar">
+				<div class="avatar-view a_View" id="avatars" title="Change the avatar">
+					<img src="images/uploadImage.png" id="imgPlay" alt="Avatar">
+					<video src="" id="videoPlay"></video>
+				</div>
+				<div class="videoMasks">
+					<button id="uploadVideo">发布视频</button>
+					<button id="upload">发布图片</button>
+				</div>
+				<div class="videosMasking">
+					<div class="videosMask"></div>
+					<form id="videosForm" method="post">
+						<input type="file" name="uploadFile" id="uploadFile" value="" />
+						
+					</form>
+				</div>
+				<div class="modal fade fade_modal" id="avatars-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<form class="avatar-form" method="post">
+								<div class="modal-header">
+									<button class="close" data-dismiss="modal" type="button">&times;</button>
+									<h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+								</div>
+								<div class="modal-body">
+									<div class="avatar-body">
+										<div class="avatar-upload">
+											<input class="avatar-src" name="avatar_src" type="hidden">
+											<input class="avatar-data" id="AvaterData" name="avatar_data" type="hidden">
+											<label for="avatars_Input">Local upload</label>
+											<input class="avatar-input" id="avatars_Input" id="avatarForm" name="avatar_file" type="file">
+										</div>
+										<div class="row">
+											<div class="col-md-9">
+												<div class="avatar-wrapper"></div>
+											</div>
+										</div>
+										<div class="row avatar-btns">
+											<div class="col-md-3" style="float: right;">
+												<button class="btn btn-primary btn-block saveAvatar" type="button">确定</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<form class="right_k" id="plore">
+				<div class="right">
+					<input type="text" name="indexPic" id="indexPic" value="" hidden/>
+					<div class="actity_title">
+						<input type="text" id="activity_theme" class="entry" name="subject" placeholder="活动主题" />
+						<div class="activity_th">
+							<input type="text" class="act_th" id="indexPicIsShow" />
+							<input type="text" id="act_th" name="indexPicIsShow" value="1" hidden/> 首页不显示活动名称
+						</div>
+					</div>
+					<input type="text" name="headPic" id="logoPic" value="" hidden/>
+					<input type="text" name="type" id="type" value="0" hidden/>
+					<input type="text" name="status" id="activityStatus" value="3" hidden/>
+					<!--<input type="text" name="status" id="statued" value="3" hidden/>-->
+					<input type="hidden" name="videoImageIndex" id="videoImage" value="" />
+					<input type="hidden" name="videoImageLogo" id="videoImages" value="" />
+					
+				</div>
+				<div class="xian"></div>
+				<div class="edit">
+					<h2>编辑详情 :</h2>
+					<script id="editor" name="content" type="text/plain" style="z-index: -10;width: 600px;"></script>
+					<script type="text/javascript">
+						//实例化编辑器
+						var ue = UE.getEditor('editor', {
+							autoHeightEnabled: true,
+							autoFloatEnabled: true,
+							initialFrameWidth: null,
+							initialFrameHeight: 366
+						});
+					</script>
+					<div class="btn" id="act_btn">
+						<input type="button" id="showDate" class="btnDate" value="首页预览" />
+						<input type="button" id="subLogin" class="btnDate" value="发现预览" />
+						<div class="draft">
+							<input type="button" id="status" class="btnDate" value="存为草稿" />
+							<input type="text" name="draft" id="draft_c" value="0" hidden/>
+						</div>
+						<input type="button" id="nextScr" class="btnDate" value="下一步" />
+					</div>
+				</div>
+			</form>
+		</section>
+		<div class="zhezhao"></div>
+		<div class="a">
+			<div class="zhe_show">
+				<div class="head">
+					<span class="head_img">
+				<img src="images/ic_tab_back_normal.png" alt="" />
+			</span>
+					<h2 class="head_find">探索详情</h2>
+					<span class="head_share">
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</span>
+				</div>
+				<div id="pic">
+					<video id="playVideos">
+						<source src="" id="sources" type="video/mp4"></source>
+						<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+								<param name="movie" value="myvideo.swf" />
+								<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+							</object>
+					</video>
+					<img src="images/btn_play.png" id="pause" alt="" />
+				</div>
+				<div class="head_pic">
+					<div id="head_pic"></div>
+					<div class="head_name">
+						<span class="author">作者：<span id="author_name"></span></span>
+						<span class="attention">
+					<img src="images/btn_add_normal.png" alt="" />
+					关注
+				</span>
+					</div>
+				</div>
+				<p id="activity_title"></p>
+				<p class="activity_time">发布时间：<span id="activityTime"></span></p>
+				<div class="preface">
+					<!--<p class="preface_n">【前言】</p>-->
+					<div id="details"></div>
+					<p class="read">阅读：<span id="read_num"></span>次</p>
+				</div>
+				<div class="col-ys"></div>
+				<div class="comment">
+					<div class="comment_c">
+						<span class="comment_co">全部评论（<span id="comment"></span>）</span>
+						<span class="comment_comm"><img src="images/btn_comment_normal.png" alt="" />评论</span>
+					</div>
+					<!--<div class="xian"></div>-->
+					<div class="comment_qu">
+						<!--<img src="images/3.png" alt="" id="comment_img" />
+						<div class="comment_right">
+							<div class="com_rig">
+								<span id="comment_name">娜娜</span>
+								<span id="comment_cont">来来来</span>
+							</div>
+							<span id="com_time">30分钟前</span>
+						</div>-->
+					</div>
+					<div class="all_a">
+						<p class="all_zi">查看全部评论</p>
+						<img src="images/btn_more_dowm_normal.png" class="all_image" alt="" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--首页预览-->
+		<div class="home">
+			<div class="home_a">
+				<img src="images/ic_tab_more_normal.png" />
+				<img src="images/ic_tab_share_normal.png" alt="" />
+			</div>
+			<section>
+				<div class="sec_play">
+					<div class="home_pics">
+						<div id="home_pic">
+							<video id="playVideo" class="playVideo">
+								<source src="" id="source" type="video/mp4"></source>
+								<!--<source src="" type="video/ogg"></source>
+								<source src="" type="video/webm"></source>-->
+								<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+									<param name="movie" value="myvideo.swf" />
+									<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+								</object>
+								<!--当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>-->
+							</video>
+							<img src="images/btn_play.png" id="paused" alt="" />
+						</div>
+						<div class="home_find">
+							<img src="images/img_1.png" alt="" />
+						</div>
+						<!--<div class="home_subject">
+							<div class="home_subjectOne">
+								<img src="images/img_5.png" />
+							</div>
+							<p id="subject"></p>
+							<div class="home_subjectTwo">
+								<img src="images/img_6.png" />
+							</div>
+						</div>-->
+					</div>
+					
+				</div>
+				<p id="time"></p>
+				<p class="home_num">活动人数: <span id="homeNum"></span>人</p>
+				<p id="home_des"></p>
+				<div class="signUp">
+					<span class="signUp_up">已报名：人</span>
+					<span>
+						<img src="images/btn_follow_normal.png" alt="" />
+					</span>
+				</div>
+				<div class="signUp_xian"></div>
+				<div class="home_organ">
+					<span class="home_organs">主办方:</span>
+					<div class="home_name">
+						<!--<span id="organ_name"></span>-->
+					</div>
+				</div>
+			</section>
+			<footer style="display: flex;">
+				<div class="fotter_one">
+					<img src="images/ic_manu_1_selected.png" alt="" />
+					<span class="home_zi homes">活动</span>
+				</div>
+				<div class="fotter_two">
+					<img src="images/ic_manu_2_normal.png" alt="" />
+					<span class="home_zi">我的</span>
+				</div>
+				<div class="fotter_three">
+					<img src="images/ic_manu_3_normal.png" alt="" />
+					<span class="home_zi">管理</span>
+				</div>
+				<div class="fotter_fore">
+					<img src="images/ic_manu_4_normal.png" alt="" />
+					<span class="home_zi">发布</span>
+				</div>
+			</footer>
+		</div>
+	</body>
+	<script>
+		//图片上传预览    IE是用了滤镜。
+		function previewImage(file) {
+			var MAXWIDTH = 260;
+			var MAXHEIGHT = 180;
+			var div = document.getElementById('preview');
+			if(file.files && file.files[0]) {
+				div.innerHTML = '<video id=imghead>';
+				var img = document.getElementById('imghead');
+				img.onload = function() {
+					var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+					img.width = rect.width;
+					img.height = rect.height;
+					//                 img.style.marginLeft = rect.left+'px';
+					img.style.marginTop = rect.top + 'px';
+				}
+				var reader = new FileReader();
+				reader.onload = function(evt) {
+					img.src = evt.target.result;
+				}
+				reader.readAsDataURL(file.files[0]);
+			} else //兼容IE
+			{
+				var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+				file.select();
+				var src = document.selection.createRange().text;
+				div.innerHTML = '<img id=imghead>';
+				var img = document.getElementById('imghead');
+				img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+				var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+				status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+				div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+			}
+		}
+
+		//头图
+		function previewImages(file) {
+			var MAXWIDTH = 260;
+			var MAXHEIGHT = 180;
+			var div = document.getElementById('previews');
+			if(file.files && file.files[0]) {
+				div.innerHTML = '<video id=imgheads>';
+				var img = document.getElementById('imgheads');
+				img.onload = function() {
+					var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+					img.width = rect.width;
+					img.height = rect.height;
+					//                 img.style.marginLeft = rect.left+'px';
+					img.style.marginTop = rect.top + 'px';
+				}
+				var reader = new FileReader();
+				reader.onload = function(evt) {
+					img.src = evt.target.result;
+				}
+				reader.readAsDataURL(file.files[0]);
+			} else //兼容IE
+			{
+				var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+				file.select();
+				var src = document.selection.createRange().text;
+				div.innerHTML = '<img id=imgheads>';
+				var img = document.getElementById('imgheads');
+				img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+				var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+				status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+				div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+			}
+		}
+
+		function clacImgZoomParam(maxWidth, maxHeight, width, height) {
+			var param = {
+				top: 0,
+				left: 0,
+				width: width,
+				height: height
+			};
+			if(width > maxWidth || height > maxHeight) {
+				rateWidth = width / maxWidth;
+				rateHeight = height / maxHeight;
+
+				if(rateWidth > rateHeight) {
+					param.width = maxWidth;
+					param.height = Math.round(height / rateWidth);
+				} else {
+					param.width = Math.round(width / rateHeight);
+					param.height = maxHeight;
+				}
+			}
+
+			param.left = Math.round((maxWidth - param.width) / 2);
+			param.top = Math.round((maxHeight - param.height) / 2);
+			return param;
+		}
+
+		//活动主题是否显示
+		var n = 0;
+		$('.act_th').click(function() {
+			var act_th = $('.act_th').val();
+			if(n % 2 == 0) {
+				$('.act_th').css({
+					'backgroundImage': 'url("./images/btn_chose_pressed.png")'
+				});
+				act_th = 0;
+				$('#act_th').val(act_th);
+			} else {
+				$('.act_th').removeAttr('style')
+				act_th = 1;
+				$('#act_th').val(act_th);
+			}
+			n++;
+			console.log(act_th);
+		});
+	</script>
+
+</html>
+

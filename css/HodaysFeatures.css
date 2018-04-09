@@ -1,0 +1,92 @@
+body{
+	background-image: url(../image/02/bg2.png);
+	background-repeat: no-repeat;
+	/*background-position: center;*/
+	background-size: initial;
+}
+.navbar{
+	height: 70px;
+	line-height: 70px;
+	background-color: #F1F1F1;
+}
+.navbar>.container{
+	height: 70px;
+	line-height: 70px;
+	background-color: #F1F1F1;
+}
+.navbar-header{
+	display: inline-block;
+}
+.navbar-brand{
+	float: left;
+    height: 50px;
+    padding: 10px 10px;
+}
+.logo{
+	display: block;
+	vertical-align: middle;
+	width: 50px;
+	height: 50px;
+}
+
+h3{
+	margin-top: 11px;
+	margin-bottom: 0px;
+	color: #434343;
+}
+h4{
+	color: #989898;
+	font-size: 18px;
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+.header-link{
+	padding: 17px 15px 0;
+	font-size: 20px;
+	color: #434343;
+}
+.ng-binding{
+	color: #c5c5c5;
+}
+.header-link:hover{
+	text-decoration: none;
+	color: #c5c5c5;
+}
+section{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+.left{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 50%;
+	float: left;
+}
+.left div{
+	display: flex;
+	flex-direction: column;
+	margin-top:90px;
+}
+.left div img{
+	cursor: pointer;
+}
+.left div span{
+	margin-top: 24px;
+	font-size: 30px;
+	color: #565656;
+	text-align: center;
+}
+.right{
+	position: relative;
+	float: right;
+}
+#pic{
+	z-index: 10;
+}
+#pics{
+	position: absolute;
+	top: 100px;
+	left: 24.3px;
+}
+
